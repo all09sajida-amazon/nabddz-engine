@@ -1,0 +1,19 @@
+// في nabdz-news و nabdz-culture
+// عند تحميل الصفحة
+window.addEventListener('load', async () => {
+    // اسحب حالة المستخدم من المركز
+    const response = await fetch('https://[YOUR_HUB_URL]/api/user-state');
+    const userState = await response.json();
+    
+    // مزامنة الحالة محليًا
+    NabdzStore.dispatch('SET_USER', userState.user);
+    NabdzStore.dispatch('SET_MOOD', userState.mood);
+});
+
+// عندما يتغير الحالة محليًا، أرسلها إلى المركز
+NabdzStore.subscribe((newState) => {
+    fetch('https://[YOUR_HUB_URL]/api/sync', {
+        method: 'POST',
+        body: JSON.stringify(newState)
+    });
+});
