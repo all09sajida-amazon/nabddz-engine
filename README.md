@@ -26,7 +26,7 @@
 أضف السطر التالي قبل وسم `</body>` في موقعك:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/your-username/nabddz-engine@latest/app.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/all09sajida-amazon/nabddz-engine@v2.0.0/app.js"></script>
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     NabdzApp.init();
